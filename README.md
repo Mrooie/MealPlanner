@@ -1,8 +1,9 @@
 # Plan Your Meals
 
-A simple meal planning app project, powered by Django.
+A simple meal planning app project to make your life a bit easier, powered by Django.
 
-[![Watch the video](https://i.ibb.co/p1wnKqr/Screen-Shot-2020-01-11-at-16-17-52.jpg)](https://youtu.be/nO6PinWEcx4)
+Watch a video:
+[![Watch the video](https://i.ibb.co/fHNTq4B/Screen-Shot-2020-01-11-at-16-17-52.jpg)](https://youtu.be/nO6PinWEcx4)
 
 ## Getting Started
 
