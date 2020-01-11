@@ -25,7 +25,6 @@ While in main directory:
 
 Run migrations:
 ```
-python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
