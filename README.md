@@ -2,6 +2,8 @@
 
 A simple meal planning app project, powered by Django.
 
+[![Watch the video](https://i.ibb.co/p1wnKqr/Screen-Shot-2020-01-11-at-16-17-52.jpg)](https://youtu.be/nO6PinWEcx4)
+
 ## Getting Started
 
 Install dependencies to your virtualenv, using requirements.txt
