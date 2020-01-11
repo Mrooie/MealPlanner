@@ -1,0 +1,92 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="mt-4 ml-4 mr-4">
+        <div class="row border-bottom border-3">
+            <div class="col"><h3 class="color-header text-uppercase">Recipe details</h3></div>
+            <div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ recipe.id }}" name="recipe_id">
+                    <input type="submit" name="like" value="like"
+                           class="btn btn-color rounded-0 pt-0 pb-0 pr-1 pl-1"
+                            style="background-color: #1e7e34;">
+
+                    <input type="submit" name="dislike" value="dislike"
+                           class="btn btn-color rounded-0 pt-0 pb-0 pr-1 pl-1"
+                            style="background-color: #79aec8; alignment: right;">
+
+                </form>
+
+            </div>
+
+
+            <div class="col d-flex justify-content-end mb-2"><a
+                    href=""
+                    class="btn btn-color rounded-0 pt-0 pb-0 pr-2 pl-2" onclick="window.history.back();return false;">Back</a>
+            </div>
+        </div>
+
+        <table class="table borderless">
+            <tbody>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Recipe name</th>
+                <td class="col-7">
+                    {{recipe.name}}
+                </td>
+            </tr>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Description</th>
+                <td class="col-7"> {{recipe.description}}
+                </td>
+            </tr>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Preparation time (minutes)</th>
+                <td class="col-7">
+                    {{recipe.preparation_time}}
+                </td>
+            </tr>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Likes</th>
+                <td class="col-7"> {{recipe.votes}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="row d-flex">
+            <div class="col-5 border-bottom border-3"><h3
+                    class="text-uppercase">How to:</h3></div>
+            <div class="col-2"></div>
+            <div class="col-5 border-bottom border-3"><h3
+                    class="text-uppercase">Ingredients</h3></div>
+        </div>
+        <div class="row d-flex">
+            <div class="col-5 p-4">
+                <p>{{recipe.instructions}}</p>
+            </div>
+            <div class="col-2"></div>
+            <ul class="col-5 p-4 list-unstyled">
+                {{recipe.ingredients}}
+            </ul>
+        </div>
+
+    </div>
+</div>
+<section class="section-more padding-small">
+    <div class="container d-flex justify-content-between">
+        <div class="mr-4">
+            <h1 class="pb-3">Add recipe to your plan</h1>
+            <h5 class="pt-1">Great! Now that you have your recipe ready, just add it to your meal plan!</br>
+            Click the button and see how easy it is!</h5>
+        </div>
+        <div class="ml-4 align-self-center">
+            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="{% url 'plan_add_recipe' %}">Add</a>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock content %}

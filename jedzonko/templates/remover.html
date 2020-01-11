@@ -1,0 +1,14 @@
+{% extends "__base__.html" %}
+
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4">
+<h2>Do you really want to remove: {{ plan.name }}? </h2><br/>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="btn btn-danger rounded-0 pt-0 pb-0 pr-4 pl-4" name="chomik" type="submit" value="Yes, remove">
+</form>
+    <a href="" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4" onClick="window.history.back();return false;">No, take me back</a>
+</div>
+
+{% endblock %}

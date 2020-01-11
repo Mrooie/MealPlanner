@@ -1,0 +1,21 @@
+{% extends "__base__.html" %}
+
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+            <div class="m-4 p-4 border-dashed">
+            <h3 class="dashboard-content-title">{{ message }}</h3>
+            </div>
+        {% endfor %}
+{% endif %}
+<div class="dashboard-content border-dashed p-3 m-4">
+<h2>Please sign in to use planner</h2><br/>
+<p><a href="{% url 'register' %}">Or create an account if you don't have one yet</a></p>
+<form action="{% url 'login' %}" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input name="chomik" type="submit" value="Sign in">
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding"><h3 class="color-header text-uppercase">Recipe
+        List</h3></div>
+        <div class="col noPadding d-flex justify-content-end mb-2"><a
+                href="{% url 'recipe_add' %}"
+                class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Add your
+                recipe!</a></div>
+    </div>
+    <table class="table border-bottom schedules-content">
+        <thead>
+        <tr class="d-flex text-color-darker">
+            <th scope="col" class="col-3">Title</th>
+            <th scope="col" class="col-2" style="text-align:center;">Likes</th>
+            <th scope="col" class="col-5" style="text-align:center;">Description</th>
+            <th scope="col" class="col-2" style="text-align:left;">Action</th>
+        </tr>
+        </thead>
+        <tbody class="text-color-lighter">
+
+        {% for r in recipes %}
+            <tr class="d-flex">
+            <th scope="row" class="col-3"> {{r.name}}</th>
+
+            <td class="col-2 d-flex align-items-center justify-content-center flex-wrap">
+                ({{r.votes}})
+            </td>
+
+            <td class="col-5">
+                {{ r.description }}
+            </td>
+
+
+
+            <td class="col-2">
+            <a href="/recipe/{{r.id}}/" class="btn btn-info rounded-0 text-light m-1">
+                Details</a>
+            </td>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    {% if recipes.has_previous %}
+    <a href="?page={{ recipes.previous_page_number  }}">&lt; previous</a>
+    {%  endif %}
+
+    |
+    {% for i in paginator.page_range %}
+        <a href="?page={{ i }}">{{ i }}</a> |
+    {% endfor %}
+
+
+    {% if recipes.has_next %}
+    <a href="?page={{ recipes.next_page_number  }}">next &gt;</a>
+    {%  endif %}
+
+
+</div>
+<section class="section-more padding-small">
+    <div class="container d-flex justify-content-between">
+        <div class="mr-4">
+            <h1 class="pb-3">Add a recipe to your plan</h1>
+            <h5 class="pt-1">Did you find a nice recipe?</br>
+            Don't wait! Add it to your plan!</h5>
+        </div>
+        <div class="ml-4 align-self-center">
+            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="{% url 'plan_add_recipe' %}">Add</a>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock content %}

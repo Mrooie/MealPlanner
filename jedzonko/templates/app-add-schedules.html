@@ -1,0 +1,55 @@
+{% extends "__base__.html" %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding">
+            <h3 class="color-header text-uppercase">NEW PLAN</h3>
+        </div>
+
+    </div>
+
+    <div class="schedules-content">
+        {% if error_messages %}
+            Uwaga, błąd:<br>
+            {% for m in error_messages %}
+            {{ m }}<br>
+        {%  endfor %}
+            <br>
+        {% endif %}
+
+        <form action="" method="post">
+            <div class="form-group row">
+                <label for="planName"
+                       class="col-sm-2 label-size col-form-label">
+                    Name
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="planName" name="name"
+                           placeholder="Name your plan...">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="planDescription"
+                       class="col-sm-2 label-size col-form-label">
+                    Description
+                </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" id="planDescription" name="description"
+                              placeholder="Describe your plan..."></textarea>
+                </div>
+            </div>
+
+                <br/>
+                <div class="col d-flex justify-content-end mb-2 noPadding">
+                    <input type="submit" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4" value="Save">
+                </div>
+
+        {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+{#{% block title %}{% endblock %}#}

@@ -1,0 +1,95 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding">
+            <h3 class="color-header text-uppercase">PLAN DETAILS</h3>
+        </div>
+        <div class="col d-flex justify-content-end mb-2 noPadding">
+            <a href="" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4" onClick="window.history.back();return false;">Back</a>
+        </div>
+    </div>
+
+    <div class="schedules-content">
+        <div class="schedules-content-header">
+            <div class="form-group row">
+                                <span class="col-sm-2 label-size col-form-label">
+                                    Name
+                                </span>
+                <div class="col-sm-10">
+                    <p class="schedules-text">{{plan.name}}
+                          </p>
+                </div>
+            </div>
+            <div class="form-group row">
+                                <span class="col-sm-2 label-size col-form-label">
+                                    Description
+                                </span>
+                <div class="col-sm-10">
+                    <p class="schedules-text"> {{plan.description}}
+
+                    </p>
+                </div>
+            </div>
+        </div>
+              {% for key, values in days.items %}
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+              {% if key == 1%}
+                <th class="col-2">Monday</th>
+                {% elif key == 2 %}
+                <th class="col-2">Tuesday</th>
+                {% elif key == 3 %}
+                 <th class="col-2">Wednesday</th>
+                  {% elif key == 4 %}
+                <th class="col-2">Thursday</th>
+                  {% elif key == 5 %}
+                  <th class="col-2">Friday</th>
+                  {% elif key == 6 %}
+                  <th class="col-2">Saturday</th>
+                  {% elif key == 7 %}
+                  <th class="col-2">Sunday</th>
+                  {% endif %}
+                <th class="col-7"></th>
+                <th class="col-1"></th>
+                <th class="col-2"></th>
+            </tr>
+            </thead>
+            {% for n in values %}
+
+            <tbody>
+               <tr class="d-flex">
+                <td class="col-2">{{n.0}}</td>
+                <td class="col-7">{{n.1}}</td>
+                <td class="col-1 center">
+                    <div style ="width:200px;">
+                    <a href="#"><button type="button" class="btn btn-danger">Delete</button>
+                    <a href="/recipe/{{ n.2 }}"><button type="button" class="btn btn-primary rounded-0">Details</button></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            {% endfor %}
+            {% endfor %}
+        </table>
+
+    </div>
+</div>
+<section class="section-more padding-small">
+    <div class="container d-flex justify-content-between">
+        <div class="mr-4">
+            <h1 class="pb-3">Add a new recipe to your plan</h1>
+            <h5 class="pt-1">Don't wait any longer!</br>
+            Click the button and start planning! :)</h5>
+        </div>
+        <div class="ml-4 align-self-center">
+            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="{% url 'plan_add_recipe' %}">ADD NOW</a>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock content %}

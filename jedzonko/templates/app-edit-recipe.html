@@ -1,0 +1,70 @@
+{% extends "__base__.html" %}
+
+{% block title %}Nowy przepis{% endblock %}
+
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+{% if message %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+{% endif %}
+
+    <form method="POST"> {% csrf_token %}
+
+    <div class="mt-4 ml-4 mr-4">
+        <div class="row border-bottom border-3">
+            <div class="col"><h3 class="color-header text-uppercase">New recipe made of existing one</h3></div>
+            <div class="col d-flex justify-content-end mb-2">
+                <input  type="submit" value="Wyślij"
+                        class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">
+
+            </div>
+        </div>
+
+        <table class="table borderless">
+            <tbody>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Title</th>
+                <td class="col-7">
+                    <input class="w-100 p-1" value="{{ recipe.name }}" name="name" type="text">
+                </td>
+            </tr>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Description</th>
+                <td class="col-7"><textarea class="w-100 p-1"
+                                            rows="5" name="description">{{ recipe.description }}</textarea></td>
+            </tr>
+            <tr class="d-flex">
+                <th scope="row" class="col-2">Preparation time (minutes)</th>
+                <td class="col-3">
+                    <input class="p-1" type="number" value="{{ recipe.preparation_time }}" name="preparation_time">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="row d-flex">
+            <div class="col-5 border-bottom border-3"><h3
+                    class="text-uppercase">How to:</h3></div>
+            <div class="col-2"></div>
+            <div class="col-5 border-bottom border-3"><h3
+                    class="text-uppercase">Ingredients</h3></div>
+        </div>
+        <div class="row d-flex">
+            <div class="col-5 p-4">
+                <textarea class="w-100 p-1" rows="10" name="instructions">{{ recipe.instructions }}</textarea>
+            </div>
+            <div class="col-2"></div>
+
+            <div class="col-5 p-4">
+                <textarea class="w-100 p-1" rows="10" name="ingredients">{{ recipe.ingredients }}</textarea>
+            </div>
+        </div>
+    </div>
+
+ </form>
+</div>
+
+{% endblock content %}

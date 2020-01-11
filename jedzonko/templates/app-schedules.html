@@ -1,0 +1,81 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding">
+            <h3 class="color-header text-uppercase">PLANS</h3>
+        </div>
+        <div class="col d-flex justify-content-end mb-2 noPadding">
+            <a href="{% url 'plan_add' %}"
+               class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Add a new plan</a>
+        </div>
+    </div>
+
+    <div class="schedules-content">
+        <table class="table border-bottom">
+            <thead>
+            <tr class="d-flex">
+              <th class="col-1">ID</th>
+                <th class="col-2">TITLE</th>
+                <th class="col-7">DESCRIPTION</th>
+                <th class="col-2 center">ACTION</th>
+            </tr>
+            </thead>
+            <tbody class="text-color-lighter">
+
+              {% for plan in plans %}
+
+            <tr class="d-flex">
+                <td class="col-1">{{plan.id}}</td>
+                <td class="col-2">{{plan.name}}</td>
+                <td class="col-7">
+                    {{plan.description}}
+                </td>
+                <td class="col-2 d-flex align-items-center justify-content-center flex-wrap">
+                    <a href="/remove/{{ plan.id }}" class="btn btn-danger rounded-0 text-light m-1">DELETE</a>
+                    <a href="/plan/{{ plan.id }}"
+                       class="btn btn-info rounded-0 text-light m-1">Details</a>
+                    <a href=""
+                       class="btn btn-warning rounded-0 text-light m-1">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if plans.has_other_pages %}
+          <ul class="pagination">
+            {% if plans.has_previous %}
+              <li><a href="?page={{ plans.previous_page_number }}">&lt;previous</a></li>
+            {% endif %}
+            {% for i in plans.paginator.page_range %}
+              {% if plans.number == i %}
+                <li class="active"><span>&nbsp;{{ i }}&nbsp;<span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">&nbsp;{{ i }}&nbsp;</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if plans.has_next %}
+              <li><a href="?page={{ plans.next_page_number }}">next &gt;</a></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+
+    </div>
+    <section class="section-more padding-small">
+        <div class="container d-flex justify-content-between">
+            <div class="mr-4">
+                <h1 class="pb-3">Add a recipe</h1>
+                <h5 class="pt-1">Missing a recipe in your plan?</br>
+                Click the button and change that!</h5>
+            </div>
+            <div class="ml-4 align-self-center">
+                <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                    <a href="{% url 'plan_add_recipe' %}">Add a recipe</a>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}
