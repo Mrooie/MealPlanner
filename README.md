@@ -43,7 +43,8 @@ End with an example of getting some data out of the system or using it for a lit
 * [PostgreSQL](https://www.postgresql.org/) - Used to generate relational databases
 
 ## Authors
-Created in Scrum collaboration with: [ewawaszczuk](https://github.com/ewawaszczuk) , [ZuzannaP](https://github.com/ZuzannaP) , [jim-stone](https://github.com/jim-stone)
+* [Mrooie](https://github.com/Mrooie)
+* Created in Scrum collaboration with: [ewawaszczuk](https://github.com/ewawaszczuk) , [ZuzannaP](https://github.com/ZuzannaP) , [jim-stone](https://github.com/jim-stone)
 
 ## License
 
