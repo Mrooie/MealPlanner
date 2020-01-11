@@ -52,4 +52,4 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the [LICENSE
 
 ## Acknowledgments
 
-* CSS based on @coderslab project
+* Base CSS courtesy of [Coderslab](https://coderslab.pl)
